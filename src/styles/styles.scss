@@ -1,0 +1,424 @@
+@use 'sass:math';
+@import "./variables.scss";
+
+// :root {
+// 	--front-color: #{$front-color};
+// 	--back-color: #{$back-color};
+// }
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	min-height: 100vh;
+
+	font-family: $body_font;
+	font-size: $base * 0.75;
+	font-weight: 500;
+	line-height: $scale;
+	font-optical-sizing: auto;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+	color: $black;
+	background-color: $grey;
+
+	@media (max-width: $mobile) {
+    font-size: $mobile_base;
+    line-height: $mobile_scale;
+  }
+
+	&:has(.-projects),
+	&:has(.-projects-id) {
+		color: $white;
+		background-color: $green_dark;
+	}
+}
+
+::selection {
+  background: $yellow;
+  color: $green_dark;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: $heading_font;
+	// text-transform: uppercase;
+	font-weight: bold;
+	line-height: 1;
+	white-space: pre-line;
+}
+
+h1,
+.h1 {
+	font-size: $base * $scale * 5;
+	font-weight: 700;
+
+	@media (max-width: $mobile) {
+    font-size: $mobile_base * $mobile_scale * 3;
+  }
+
+	&.h1--huge {
+		font-size: 14vw;
+		line-height: 0.88;
+	}
+}
+
+h2,
+.h2 {
+	font-size: $base * $scale * 3;
+
+	@media (max-width: $mobile) {
+    font-size: $mobile_base * $mobile_scale * 2;
+  }
+}
+
+h3,
+.h3 {
+	font-size: $base * $scale * 2;
+
+	@media (max-width: $mobile) {
+    font-size: $mobile_base * $mobile_scale * 1.5;
+  }
+}
+
+h4,
+.h4 {
+	font-size: $base * $scale * 1.5;
+
+	@media (max-width: $mobile) {
+    font-size: $mobile_base * $mobile_scale * 1;
+  }
+}
+
+h5,
+.h5 {
+	font-size: $base * $scale;
+	font-weight: 500;
+
+	@media (max-width: $mobile) {
+    font-size: $mobile_base * $mobile_scale * 1;
+  }
+}
+
+h6,
+.h6 {
+	font-size: $base;
+	font-weight: normal;
+}
+
+p {
+	line-height: $scale;
+	white-space: pre-line;
+}
+
+a {
+	color: currentColor;
+	text-decoration: none;
+	white-space: pre-line;
+
+	// * {
+	// 	pointer-events: none;
+	// }
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+input,
+select,
+textarea,
+button,
+.button {
+	appearance: none;
+	font-size: inherit;
+	color: inherit;
+	font-family: inherit;
+	text-transform: inherit;
+	line-height: $scale;
+	border: none;
+	color: currentColor;
+	background: $white;
+	border-radius: $radius;
+	padding: ($base * 0.25) ($base * 0.5);
+}
+
+button,
+.button {
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: $base * 0.5;
+
+	&.button--black {
+		color: $white;
+		background: $black;
+	}
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: $white;
+		background: $black;
+	}
+
+	&.button--none {
+		color: currentColor;
+		background: transparent;
+		padding: 0;
+	}
+}
+
+// fieldset {
+// 	appearance: none;
+// 	border: none;
+// 	width: 100%;
+
+// 	label {
+// 		pointer-events: none;
+// 		height: 0;
+// 		position: relative;
+// 		z-index: 1;
+// 		display: block;
+// 		top: $base * 0.6;
+// 		left: $base;
+// 		transition: top 333ms;
+
+// 		&:has(+ input:not(:placeholder-shown)),
+// 		&:has(+ textarea:not(:placeholder-shown)),
+// 		&:has(+ select:not(:invalid)) {
+// 			font-size: $base * 0.66;
+// 			top: 1px;
+// 		}
+// 	}
+// }
+
+input,
+select,
+textarea {
+	width: 100%;
+	background-color: transparent;
+	color: currentColor;
+	border: 1px solid;
+
+	&:focus {
+		outline: 1px solid $yellow;
+		outline-offset: 0px;
+	}
+
+	// &:not(:placeholder-shown) {
+	// 	padding: ($base * 0.75) $base ($base * 0.25);
+	// }
+}
+
+textarea {
+	height: $base * 10;
+}
+
+input[type = "radio"],
+input[type = "checkbox"] {
+	cursor: pointer;
+	appearance: none;
+	width: auto;
+	padding: ($base * 0.5);
+
+	color: currentColor;
+	background-color: transparent;
+	border: 1px solid;
+
+	&:checked {
+		background-color: currentColor;
+	}
+}
+
+svg {
+	fill: none;
+
+	path:not([stroke]) {
+		fill: currentColor;
+	}
+
+	line {
+		stroke: currentColor;
+	} 
+}
+
+ul,
+ol {
+	padding-left: 1em;
+	
+	&.list--nostyle {
+		list-style: none;
+		padding-left: 0;
+	}
+}
+
+hr {
+	color: currentColor;
+	border: none;
+	height: 1px;
+	background-color: currentColor;
+	margin: ($base*0.666) 0;
+}
+
+table {
+	width: 100%;
+	-webkit-border-horizontal-spacing: 0;
+	-webkit-border-vertical-spacing: 0;
+
+	td,
+	th {
+		font-weight: normal;
+		border-top: 1px solid;
+		padding: ($base * 0.5) 0;
+		white-space: pre-line;
+		width: calc(100% / var(--length));
+	}
+
+	th {
+		border-top: none;
+		text-align: left;
+		border-color: transparent;
+	}
+
+	tr {
+		&:first-child:last-child {
+			td,
+			th {
+				border-top: none;
+			}
+		}
+	}
+
+	td {
+		&:not(:first-child) {
+			// border-left: 1px solid;
+		}
+	}
+
+	&.table--inverse {
+		td,
+		th {
+			border-top: none;
+			border-bottom: 1px solid;
+		}
+	}
+}
+
+details {
+	
+	summary {
+		// cursor: pointer;
+
+		&::-webkit-details-marker {
+			display: none;
+			content: "";
+		}
+
+		&::marker {
+			display: none;
+			content: "";
+		}
+	}
+}
+
+[id] {
+	scroll-margin-top: $base * 4;
+}
+
+
+// #GRID
+
+.flex {
+  width: 100%;
+  display: flex;
+	align-items: flex-start;
+  flex-wrap: wrap;
+  --gap: 0px;
+  gap: var(--gap);
+
+	&.flex--end {
+		justify-content: flex-end;
+	}
+
+	&.flex--spaced {
+		justify-content: space-between;
+	}
+
+	&.flex--middle {
+		align-items: center;
+	}
+
+  &.flex--gapped {
+    --gap: #{$base};
+
+    @media (max-width: $mobile) {
+      --gap: #{$base * 0.5};
+    }
+
+		hr {
+			margin: 0;
+		}
+  }
+
+  &.flex--thick_gapped {
+    --gap: #{$base*2};
+
+		hr {
+			margin: 0;
+		}
+  }
+
+  &.flex--tight_gapped {
+    --gap: #{$base * 0.5};
+    @media (max-width: $mobile) {
+      --gap: #{$base * 0.333};
+    }
+
+		hr {
+			margin: 0;
+		}
+  }
+
+  &.flex--tight_guttered_on_phone {
+    @media (max-width: $mobile) {
+      --gap: #{$base * 0.333};
+    }
+  }
+}
+
+  .col {
+    @for $i from 1 through $number_of_columns { 
+      &.col--#{$i}of#{$number_of_columns} {
+        $width: math.div(100%, $number_of_columns) * $i;
+        $adjust: calc(var(--gap) / #{math.div($number_of_columns, $i)});
+        width: calc(#{$width} - var(--gap) + #{$adjust});
+       }
+
+			@media (max-width: $mobile) {
+				&.col--mobile--#{$i}of#{$number_of_columns} {
+					$width:  math.div(100%, $number_of_columns) * $i;
+					$adjust: calc(var(--gap) / #{math.div($number_of_columns, $i)});
+					width: calc(#{$width} - var(--gap) + #{$adjust});
+				}
+			}
+    }
+
+    @for $i from 1 through 3 { 
+      &.col--#{$i}of#{3} {
+        $width:  math.div(100%, 3) * $i;
+        $adjust: calc(var(--gap) / #{math.div(3, $i)});
+        width: calc(#{$width} - var(--gap) + #{$adjust});
+       }
+    }
+  }
+
