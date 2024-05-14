@@ -30,9 +30,5 @@
 <style lang="scss">
 	main {
 		min-height: 100vh;
-
-		// :global(> *:first-child) {
-		// 	padding-top: $base * 4;
-		// }
 	}
 </style>

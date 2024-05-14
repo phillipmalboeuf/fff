@@ -33,12 +33,13 @@
 
 <style lang="scss">
 	header {
-		position: fixed;
+		position: sticky;
 		top: 0;
 		left: 0;
 		width: 100vw;
 		padding: $base;
 		pointer-events: none;
+		z-index: 666;
 
 		display: flex;
 

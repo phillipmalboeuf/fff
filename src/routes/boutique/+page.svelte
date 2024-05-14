@@ -23,7 +23,6 @@
 <style lang="scss">
   ol.list--nostyle {
     padding: $base;
-    padding-top: $base * 4;
 
     li {
       text-align: center;

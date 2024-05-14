@@ -1,7 +1,7 @@
 import { square } from '$lib/clients/square'
 import { redirect } from '@sveltejs/kit'
 import type { Actions } from './$types'
-import { hashPassword } from '$lib/formatters'
+import { hashPassword } from '$lib/encryption'
 import { parse, stringify } from 'devalue'
 
 export const load = (async ({ locals, url, params, cookies }) => {

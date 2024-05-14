@@ -4,6 +4,12 @@
 
 import { square } from '$lib/clients/square'
 
+export type Point = {
+  nom: string
+  adresse: string
+  latlng: [number, number]
+}
+
 export const load = (async ({ locals, url, params }) => {
   // const filter = url.searchParams.get("service")
 
@@ -24,7 +30,7 @@ export const load = (async ({ locals, url, params }) => {
   return {
     fermes: await Promise.all(fermes.result.customers.map(async customer => ({
       ...customer,
-      points: JSON.parse((await square.customerCustomAttributesApi.retrieveCustomerCustomAttribute(customer.id, 'square:0abfbff5-ca2e-48b6-ae54-680fa472398c')).result.customAttribute.value as string)
+      points: JSON.parse((await square.customerCustomAttributesApi.retrieveCustomerCustomAttribute(customer.id, 'square:0abfbff5-ca2e-48b6-ae54-680fa472398c')).result.customAttribute.value as string) as Point[]
     })))
   }
 })
