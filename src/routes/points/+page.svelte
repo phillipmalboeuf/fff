@@ -1,19 +1,14 @@
 <script lang="ts">
-  import { addItem } from '$lib/services/cart.svelte'
 
   import type { PageData } from './$types'
   export let data: PageData
-
-  console.log(data.plans.subscriptionPlanData)
 </script>
 
 
 <ol class="list--nostyle flex">
-  {#each data.items.result.objects as item}
+  {#each data.fermes as ferme}
   <li class="col col--3of12">
-    {item.itemData.name}
-    <!-- {item.itemData.variations.map(v => v.id)} -->
-    <button onclick={() => false}>S'abonner</button>
+    {ferme.points.map(point => point.nom)}
   </li>
   {/each}
 </ol>
@@ -27,10 +22,6 @@
     li {
       text-align: center;
       padding: $base * 0.5;
-
-      button {
-        width: 100%;
-      }
     }
   }
 </style>

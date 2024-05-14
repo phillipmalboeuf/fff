@@ -20,3 +20,21 @@ export const year = (value: string) => {
 export const time = (value: string, timezone: number) => {
   return DateTime.fromISO(value).setLocale('fr-CA').setZone(`UTC${timezone}`).toLocaleString({ hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
 }
+
+
+import { randomBytes, createHmac } from 'crypto'
+
+export const randomPassword = (bytes=12)=> {
+  return randomBytes(bytes).toString('hex')
+}
+
+export const hashPassword = (password: string, salt?: string)=> {
+  const _salt = salt ? salt : randomPassword()
+  const hash = createHmac('sha512', _salt)
+  hash.update(password)
+
+  return {
+    salt: _salt,
+    password: hash.digest('hex')
+  }
+}
