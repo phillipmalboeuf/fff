@@ -10,6 +10,20 @@ export const actions = {
       order: {
         locationId: 'LG3VQ54FBJKSD',
         lineItems: Object.entries(items).map(([catalogObjectId, quantity]) => ({ quantity: quantity.toString(), catalogObjectId })),
+        taxes: [
+          {
+            name: 'TPS',
+            percentage: '5',
+            scope: 'ORDER',
+            type: 'ADDITIVE'
+          },
+          {
+            name: 'TVQ',
+            percentage: '9.975',
+            scope: 'ORDER',
+            type: 'ADDITIVE'
+          }
+        ]
       }
     })
     

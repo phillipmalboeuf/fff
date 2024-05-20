@@ -2,7 +2,7 @@ import { browser } from '$app/environment'
 
 export type Item = { 
   id: string,
-  name: string,
+  name?: string,
   price: number,
   quantity?: number,
 }

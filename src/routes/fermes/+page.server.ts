@@ -8,6 +8,7 @@ export type Point = {
   nom: string
   adresse: string
   latlng: [number, number]
+  times: [number, number, number][]
 }
 
 export const load = (async ({ locals, url, params }) => {

@@ -134,6 +134,10 @@ a:hover {
 	text-decoration: none;
 }
 
+fieldset {
+	border: none;
+}
+
 input,
 select,
 textarea,
@@ -150,6 +154,12 @@ button,
 	background: $white;
 	border-radius: $radius;
 	padding: ($base * 0.5) ($base * 0.75);
+
+	&:disabled,
+	&.disabled {
+		pointer-events: none;
+		opacity: 0.33;
+	}
 }
 
 button,
@@ -161,8 +171,9 @@ button,
 	gap: $base * 0.5;
 	padding: ($base * 0.25) ($base * 0.5);
 
-	&[type=submit] {
-		padding: ($base * 0.5) ($base * 0.75);
+	&.button--large,
+	form & {
+		padding: ($base * 0.5) ($base * 1.5);
 	}
 
 	&.button--black {
@@ -207,6 +218,33 @@ button,
 // 		}
 // 	}
 // }
+
+label {
+	cursor: pointer;
+
+	&:has(> input[type=checkbox]),
+	&:has(> input[type=radio]) {
+		display: flex;
+		align-items: center;
+		gap: $base * 0.5;
+
+		&.button {
+			background-color: $grey;
+
+			&:hover,
+			&:focus,
+			&:has(> input[type=checkbox]:checked),
+			&:has(> input[type=radio]:checked)  {
+				color: $white;
+				background: $black;
+			}
+
+			input {
+				display: none;
+			}
+		}
+	}
+}
 
 input,
 select,
@@ -361,6 +399,10 @@ details {
 
 	&.flex--spaced {
 		justify-content: space-between;
+	}
+
+	&.flex--center {
+		justify-content: center;
 	}
 
 	&.flex--middle {

@@ -3,19 +3,35 @@
   import Icon from '$lib/components/Icon.svelte'
 
   import type { PageData } from './$types'
-  export let data: PageData
+  let { data }: { data: PageData } = $props()
+
+  let selection = $state<string>()
 </script>
 
-<main class="flex">
-  <aside class="col col--4of12">
-    <ol class="list--nostyle flex">
+<main class="flex flex--tight_gapped">
+  <form class="col col--4of12">
+    <ol class="list--nostyle">
       {#each data.fermes as ferme}
-      <li class="col col--3of12">
-        {ferme.points.map(point => [point.nom, point.adresse, point.latlng])}
+      <li>
+        <label>
+          <input type="radio" name="point" bind:group={selection} value={ferme.id}>
+          {ferme.companyName}<br>
+          {ferme.address.addressLine1}, {ferme.address.locality}, {ferme.address.postalCode}
+        </label>
+      </li>
+      {#each ferme.points as point, i}
+      <li>
+        <label>
+          <input type="radio" name="point" bind:group={selection} value={`${ferme.id}?point=${i}`}>
+          {point.nom}<br>
+          {point.adresse}
+        </label>
       </li>
       {/each}
+      {/each}
     </ol>
-  </aside>
+  </form>
+
   <figure class="col col--8of12">
     <MapLibre 
       center={[-72.6,45.8]}
@@ -42,6 +58,8 @@
       {/each}
     </MapLibre>
   </figure>
+
+  <a class="button button--black" href="/fermes/{selection}" class:disabled={!selection}>Étape suivante</a>
 </main>
 
 
@@ -50,9 +68,16 @@
     padding: $base;
   }
 
+  form {
+    padding: $base;
+    border-radius: $radius;
+    background-color: $white;
+  }
+
   figure {
     :global(.map) {
       height: 75vh;
+      border-radius: $radius;
 
       :global(.marker) {
         cursor: pointer;
@@ -65,11 +90,7 @@
   }
 
   ol.list--nostyle {
-    padding: $base;
-    padding-top: $base * 4;
-
     li {
-      text-align: center;
       padding: $base * 0.5;
     }
   }
