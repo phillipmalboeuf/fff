@@ -1,12 +1,14 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import Icon from '$lib/components/Icon.svelte'
-  import { adresse, capitalize, frequencyLabel, money, weektime } from '$lib/formatters'
+  import { adresse, capitalize, dt, frequencyLabel, money, weektime } from '$lib/formatters'
   import type { Order } from 'square'
   import type { Item } from '$lib/services/cart.svelte'
   import { parse, stringify } from 'devalue'
 
   import type { PageData } from './$types'
+  import Calendar from '$lib/components/Calendar.svelte';
+  import { datetime } from 'rrule';
   let { data }: { data: PageData } = $props()
 
   // let point = $state<number>($page.url.searchParams.get('point') ? parseInt($page.url.searchParams.get('point')) : undefined)
@@ -70,6 +72,10 @@
       <p>Jour et heure<br>{weektime(data.time)}</p>
       <p>Fréquence<br>{frequencyLabel(data.frequency)}</p>
       <!-- <p>Jour et heure<br>{weektime(data.time)}</p> -->
+    </div>
+
+    <div class="col col--12of12">
+      <Calendar dates={data.dates} exceptions={data.exceptions.map(e => dt(e, data.time[1] + 4, 0, 0))} />
     </div>
 
     <hr>

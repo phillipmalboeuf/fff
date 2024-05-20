@@ -1,4 +1,5 @@
 import { DateTime, Duration, type WeekdayNumbers } from 'luxon'
+import { datetime } from 'rrule'
 import type { Address } from 'square'
 
 export const money = (value: any) => {
@@ -32,6 +33,11 @@ export const weektime = (value: [number, number, number]) => {
   // })
   const date = DateTime.now().setLocale('fr-CA').set({ weekday: value[0] as WeekdayNumbers })
   return `${capitalize(date.weekdayLong)} ${value[1]}h à ${value[2]}h`
+}
+
+export const dt = (value: string, hour?: number, minute?: number, second?: number) => {
+  const split = value.split('-').map(s => parseInt(s))
+  return datetime(split[0], split[1], split[2], hour, minute, second)
 }
 
 export const frequencyLabel = (value: number) => {

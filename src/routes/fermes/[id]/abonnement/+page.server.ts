@@ -8,10 +8,11 @@ import { square } from '$lib/clients/square'
 import { redirect } from '@sveltejs/kit'
 import { parse } from 'devalue'
 import type { Item } from '$lib/services/cart.svelte'
+import { dates } from '$lib/dates'
 
 
 export const load = (async ({ locals, url, params, parent }) => {
-  const { points, saisons } = await parent()
+  const { points, saisons, exceptions } = await parent()
   const point = points[parseInt(url.searchParams.get("point"))]
   const saison = saisons[parseInt(url.searchParams.get("saison"))]
   const format = saison.formats[parseInt(url.searchParams.get("format"))]
@@ -25,6 +26,7 @@ export const load = (async ({ locals, url, params, parent }) => {
   ])
 
   return {
+    dates: dates(saison, frequency, time[0], time[1], exceptions),
     point,
     saison,
     format,
@@ -40,8 +42,6 @@ export const load = (async ({ locals, url, params, parent }) => {
 export const actions = {
 	checkout: async (event) => {
     const { items } = Object.fromEntries(await event.request.formData())
-
-    console.log(parse(items as string))
 
     const link = await square.checkoutApi.createPaymentLink({
       order: {

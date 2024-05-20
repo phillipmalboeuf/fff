@@ -471,5 +471,13 @@ details {
         width: calc(#{$width} - var(--gap) + #{$adjust});
        }
     }
+
+		@for $i from 1 through 7 { 
+      &.col--#{$i}of#{7} {
+        $width:  math.div(100%, 7) * $i;
+        $adjust: calc(var(--gap) / #{math.div(7, $i)});
+        width: calc(#{$width} - var(--gap) + #{$adjust});
+       }
+    }
   }
 

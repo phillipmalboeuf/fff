@@ -29,9 +29,10 @@ export type Saison = {
 const customKeys = {
   'points': 'square:0abfbff5-ca2e-48b6-ae54-680fa472398c',
   'saisons': 'square:ef2db97d-cf08-47e7-a88a-a26fa5220df8',
+  'exceptions': 'square:2247a9ae-fb2b-4009-9df9-14096a2633ee',
   'website': 'square:ae8c4df6-7f90-4d70-9222-5b2832decf1b',
   'bio': 'square:3d5909f1-012a-4c9d-aae8-865cf6be246c',
-  'logo': 'square:9bdc0b57-20bb-4c35-a737-500c8aea6bf2'
+  'logo': 'square:9bdc0b57-20bb-4c35-a737-500c8aea6bf2',
 }
 
 export const load = (async ({ locals, url, params }) => {
@@ -46,6 +47,7 @@ export const load = (async ({ locals, url, params }) => {
     ferme: ferme.result.customer,
     points: JSON.parse(attributes.result.customAttributes.find(attribute => attribute.key === customKeys['points']).value as string) as Point[],
     saisons: JSON.parse(attributes.result.customAttributes.find(attribute => attribute.key === customKeys['saisons']).value as string) as Saison[],
+    exceptions: JSON.parse(attributes.result.customAttributes.find(attribute => attribute.key === customKeys['exceptions']).value as string) as string[],
     website: attributes.result.customAttributes.find(attribute => attribute.key === customKeys['website']).value as string,
     bio: attributes.result.customAttributes.find(attribute => attribute.key === customKeys['bio']).value as string,
     logo: attributes.result.customAttributes.find(attribute => attribute.key === customKeys['logo']).value as string

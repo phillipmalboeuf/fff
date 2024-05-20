@@ -8,7 +8,6 @@ import type { Money } from 'square'
 export const POST: RequestHandler = async ({ request }) => {
 	const { items } = await request.json()
 
-  console.log(items)
   const order = await square.ordersApi.calculateOrder({
     order: {
       locationId: 'LG3VQ54FBJKSD',
