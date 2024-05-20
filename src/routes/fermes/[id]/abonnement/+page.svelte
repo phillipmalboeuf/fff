@@ -1,14 +1,13 @@
 <script lang="ts">
-  import { page } from '$app/stores';
-  import Icon from '$lib/components/Icon.svelte'
   import { adresse, capitalize, dt, frequencyLabel, money, weektime } from '$lib/formatters'
   import type { Order } from 'square'
   import type { Item } from '$lib/services/cart.svelte'
   import { parse, stringify } from 'devalue'
 
+  import Calendar from '$lib/components/Calendar.svelte'
+  import Icon from '$lib/components/Icon.svelte'
+
   import type { PageData } from './$types'
-  import Calendar from '$lib/components/Calendar.svelte';
-  import { datetime } from 'rrule';
   let { data }: { data: PageData } = $props()
 
   // let point = $state<number>($page.url.searchParams.get('point') ? parseInt($page.url.searchParams.get('point')) : undefined)
@@ -25,6 +24,12 @@
       quantity: 1,
       price: data.format.prix
     },
+    ...data.options?.length ? data.options.map(option => ({
+      name: option.titre || option.option,
+      id: data.option.itemData.variations.find(v => v.itemVariationData.sku === option.option)?.id || data.option.itemData.variations.find(v => v.itemVariationData.sku === 'autre').id,
+      quantity: data.dates.length,
+      price: option.prix
+    }))  : [],
     ...don ? [{
       id: data.don.itemData.variations.find(v => Number(v.itemVariationData.priceMoney.amount) === don * 100)?.id || data.don.itemData.variations.find(v => v.itemVariationData.pricingType === 'VARIABLE_PRICING')?.id,
       quantity: 1,
@@ -65,7 +70,10 @@
       </p>
       <p>
         {data.saison.titre}<br>
-        {data.format.titre || capitalize(data.format.format)}
+        {data.format.titre || capitalize(data.format.format)}<br>
+        {#each data.options as option}
+        {capitalize(option.titre || option.option)} +{money(option.prix)}<br>
+        {/each}
       </p>
     </div>
     <div class="col col--6of12">
@@ -80,9 +88,6 @@
 
     <hr>
 
-    <div class="col col--6of12">Sous-total</div>
-    <div class="col col--6of12">{money(data.format.prix)}</div>
-    
     <div class="col col--6of12">Don</div>
     <div class="col col--6of12"><small>Contribuez à l'essor de l'agriculture biologique de proximité! Un don aujourd'hui sème la réussite des projets agricoles de demain.</small></div>
     <fieldset class="col col--12of12 flex flex--gapped">
@@ -106,8 +111,19 @@
 
     <div class="flex flex--spaced">
 
-      <div class="col col--6of12">Sous-total</div>
+      <div class="col col--6of12">{capitalize(data.format.titre || data.format.format)}</div>
       <div class="col">{money(data.format.prix)}</div>
+
+      {#each data.options as option}
+      <div class="col col--6of12">{capitalize(option.titre || option.option)}</div>
+      <div class="col">{money(option.total)}</div>
+      {/each}
+
+      <hr>
+
+      <div class="col col--6of12">Sous-total</div>
+      <div class="col"><strong>{money(data.format.prix + data.options.reduce((t, option) => t + (option.prix * data.dates.length), 0))}</strong></div>
+
       {#if don}
       <div class="col col--6of12">Don</div>
       <div class="col">{money(don)}</div>

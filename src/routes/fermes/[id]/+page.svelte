@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { page } from '$app/stores';
-  import Icon from '$lib/components/Icon.svelte'
+  import { page } from '$app/stores'
   import { adresse, capitalize, frequencyLabel, money, weektime } from '$lib/formatters'
 
   import type { PageData } from './$types'
@@ -95,7 +94,7 @@
 
   <nav class="col col--12of12 flex flex--tight_gapped flex--center">
     <a class="button button--large" href="/points">Retour</a>
-    <button form="ferme" class="button--black button--large" class:disabled={point === undefined || saison === undefined || format === undefined || time === undefined}>Étape suivante</button>
+    <button form="ferme" class="button--black button--large" class:disabled={point === undefined || saison === undefined || format === undefined || time === undefined || frequency === undefined}>Étape suivante</button>
   </nav>
 </section>
 

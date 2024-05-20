@@ -19,23 +19,34 @@ export const load = (async ({ locals, url, params, parent }) => {
   const time = point.times[parseInt(url.searchParams.get("time"))]
   const frequency = parseInt(url.searchParams.get("frequency"))
 
-  const [panier, don, cotisation] = await Promise.all([
+  const dts = dates(saison, frequency, time[0], time[1], exceptions)
+
+  const options = Array.from(url.searchParams.entries()).filter(([key, value]) => key.includes('option') && value === 'on').map(([key, value]) => parseInt(key.split('.')[1])).map(o => ({
+    ...saison.options[o],
+    total: saison.options[o].prix * dts.length
+  }))
+
+  const [panier, don, cotisation, option] = await Promise.all([
     square.catalogApi.retrieveCatalogObject('HMN6IXICYRBNC6I6A4WK4CI7'),
     square.catalogApi.retrieveCatalogObject('3QDZIS3QEIYKD5DG7WAQQKJP'),
     square.catalogApi.retrieveCatalogObject('4WPQRJAZ66XPFT3CUDE7D3Q4'),
+    square.catalogApi.retrieveCatalogObject('LNQ4JEJRE4F4D7MLWXAHKQOT'),
   ])
 
+  console.log(options)
+
   return {
-    dates: dates(saison, frequency, time[0], time[1], exceptions),
+    dates: dts,
     point,
     saison,
     format,
     time,
     frequency,
+    options,
+    option: option.result.object,
     panier: panier.result.object,
     don: don.result.object,
     cotisation: cotisation.result.object,
-    options: []
   }
 })
 
