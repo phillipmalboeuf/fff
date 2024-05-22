@@ -13,7 +13,7 @@
   } = $props()
 </script>
 
-<main class="flex flex--gapped flex--center flex--middle" style="background-color: var(--{item.fields.couleur}, var(--Gris))">
+<main class="flex flex--gapped flex--center flex--middle {item.fields.couleur || "Gris"}">
   <h1 class="h1--hero">{item.fields.titre}</h1>
 
   {#if item.fields.media?.length}

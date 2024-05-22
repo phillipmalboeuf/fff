@@ -2,17 +2,6 @@
 @import "./variables.scss";
 
 :root {
-	--Gris: #{$grey};
-	--Beige: #{$beige};
-	--Vert: #{$green};
-	--Jaune: #{$yellow};
-	--Or: #{$gold};
-	--Orange: #{$orange};
-	--Rouge: #{$red};
-	--Brun: #{$brown};
-	--Corail: #{$coral};
-	--Rose: #{$rose};
-	--Mauve: #{$rose_mauve};
 }
 
 * {
@@ -226,6 +215,7 @@ button,
 	}
 
 	&.button--grey {
+		color: $black;
 		background: $grey;
 	}
 
@@ -457,6 +447,10 @@ details {
 		align-items: center;
 	}
 
+	&.flex--column {
+		flex-direction: column;
+	}
+
   &.flex--gapped {
     --gap: #{$base};
 
@@ -529,3 +523,39 @@ details {
     }
   }
 
+.Gris {
+	background-color: $grey;
+};
+.Beige {
+	background-color: $beige;
+};
+.Vert {
+	background-color: $green;
+};
+.Jaune {
+	background-color: $yellow;
+};
+.Or {
+	background-color: $gold;
+};
+.Orange {
+	color: $white;
+	background-color: $orange;
+};
+.Rouge {
+	color: $white;
+	background-color: $red;
+};
+.Brun {
+	color: $white;
+	background-color: $brown;
+};
+.Corail {
+	background-color: $coral;
+};
+.Rose {
+	background-color: $rose;
+};
+.Mauve {
+	background-color: $rose_mauve;
+};

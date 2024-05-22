@@ -143,6 +143,7 @@ export interface TypeTextFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
     sansTitre?: EntryFieldTypes.Boolean;
+    sousTitre?: EntryFieldTypes.Symbol;
     corps?: EntryFieldTypes.RichText;
     lien?: EntryFieldTypes.EntryLink<TypeLienSkeleton>;
     media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
