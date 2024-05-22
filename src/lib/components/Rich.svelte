@@ -51,27 +51,27 @@
 
 {:else if node.nodeType === 'unordered-list'}
   <ul>
-    {#each node.content as item}<li>{#each item.content as node}<svelte:self node={node} />{/each}</li>{/each}
+    {#each node.content as item}<li>{#each item.content as node}{@render n(node)}{/each}</li>{/each}
   </ul>
 
 {:else if node.nodeType === 'ordered-list'}
   <ol>
-    {#each node.content as item}<li>{#each item.content as node}<svelte:self node={node} />{/each}</li>{/each}
+    {#each node.content as item}<li>{#each item.content as node}{@render n(node)}{/each}</li>{/each}
   </ol>
 
 {:else if node.nodeType === 'table'}
   <table>
     <tbody>
-    {#each node.content as item}<tr>{#each item.content as node}<svelte:self node={node} />{/each}</tr>{/each}
+    {#each node.content as item}<tr>{#each item.content as node}{@render n(node)}{/each}</tr>{/each}
     </tbody>
   </table>
 {:else if node.nodeType === 'table-header-cell'}
-  <th data-content="{node.content[0]?.content[0]?.value}">{#each node.content as item}<svelte:self node={item} />{/each}</th>
+  <th data-content="{node.content[0]?.content[0]?.value}">{#each node.content as item}{@render n(item)}{/each}</th>
 {:else if node.nodeType === 'table-cell'}
-  <td>{#each node.content as item}<svelte:self node={item} />{/each}</td>
+  <td>{#each node.content as item}{@render n(item)}{/each}</td>
 
 {:else if node.nodeType === 'blockquote'}
-  <blockquote>{#each node.content as code}<svelte:self node={code} />{/each}</blockquote>
+  <blockquote>{#each node.content as code}{@render n(code)}{/each}</blockquote>
 
 {:else if node.nodeType === 'embedded-asset-block'}
   <figure>

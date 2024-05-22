@@ -2,7 +2,7 @@
 	import '../styles/styles.scss'
 
 	import Header from '$lib/components/Header.svelte'
-	// import Footer from '$lib/components/Footer.svelte'
+	import Footer from '$lib/components/Footer.svelte'
 
 	import { page } from '$app/stores'
 
@@ -24,7 +24,7 @@
 		<slot />
 	</main>
 
-	<!-- <Footer primary={data.primary} social={data.social} contact={data.contact} /> -->
+	<Footer footer={data.footer} tertiaire={data.tertiaire} />
 </div>
 
 <style lang="scss">

@@ -28,7 +28,7 @@
 
   <!-- {#if item.fields.lien}
   <nav>
-    <Link class="button button--green" link={item.fields.lien} />
+    <Link className="button button--green" link={item.fields.lien} />
   </nav> 
   {/if} -->
 

@@ -27,7 +27,7 @@
 
     {#if item.fields.lien}
     <nav>
-      <Link class="button button--grey" link={item.fields.lien} />
+      <Link className="button button--grey" link={item.fields.lien} />
     </nav> 
     {/if}
   </main>
@@ -53,7 +53,7 @@
   {#if item.fields.buttons}
   <nav>
     {#each item.fields.buttons as button}
-    <Link class="button button--green" link={button} />
+    <Link className="button button--green" link={button} />
     {/each}
   </nav>
   {/if} -->

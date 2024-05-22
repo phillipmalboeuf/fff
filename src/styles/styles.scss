@@ -124,6 +124,12 @@ h5,
   //   font-size: $mobile_base * $mobile_scale * 1;
   // }
 
+	&.h5--custom {
+		font-family: $custom_font;
+		font-size: $base / $scale * 1.56;
+		font-weight: bold;
+	}
+
 	&.h5--mono {
 		font-family: $mono_font;
 		font-size: $base / $scale * 0.94;
@@ -367,6 +373,7 @@ table {
 		padding: ($base * 0.5) 0;
 		white-space: pre-line;
 		width: calc(100% / var(--length));
+		vertical-align: top;
 	}
 
 	th {
@@ -539,7 +546,6 @@ details {
 	background-color: $gold;
 };
 .Orange {
-	color: $white;
 	background-color: $orange;
 };
 .Rouge {
