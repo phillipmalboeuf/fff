@@ -20,15 +20,16 @@ body {
 	min-height: 100vh;
 
 	font-family: $body_font;
-	font-size: $base * 0.75;
-	font-weight: 500;
-	line-height: $scale;
+	font-size: $base / $scale;
+	font-weight: normal;
+	line-height: 1;
+	letter-spacing: -0.05em;
 	font-optical-sizing: auto;
 	-webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
 	color: $black;
-	background-color: $grey;
+	background-color: $white;
 
 	@media (max-width: $mobile) {
     font-size: $mobile_base;
@@ -49,75 +50,109 @@ body {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: $heading_font;
+	font-family: $body_font;
 	// text-transform: uppercase;
-	font-weight: bold;
+	font-weight: normal;
 	line-height: 1;
 	white-space: pre-line;
 }
 
 h1,
 .h1 {
-	font-size: $base * $scale * 5;
-	font-weight: 700;
+	font-size: $base / $scale * 3.33;
 
-	@media (max-width: $mobile) {
-    font-size: $mobile_base * $mobile_scale * 3;
-  }
+	// @media (max-width: $mobile) {
+  //   font-size: $mobile_base * $mobile_scale * 3;
+  // }
 
-	&.h1--huge {
+	&.h1--custom {
+		font-family: $custom_font;
+		font-size: $base / $scale * 6.25;
+		font-weight: bold;
+	}
+
+	&.h1--hero {
+		font-family: $custom_font;
 		font-size: 14vw;
 		line-height: 0.88;
+		font-weight: bold;
 	}
 }
 
 h2,
 .h2 {
-	font-size: $base * $scale * 3;
+	font-size: $base / $scale * 2.5;
 
-	@media (max-width: $mobile) {
-    font-size: $mobile_base * $mobile_scale * 2;
-  }
+	// @media (max-width: $mobile) {
+  //   font-size: $mobile_base * $mobile_scale * 2;
+  // }
+
+	&.h2--custom {
+		font-family: $custom_font;
+		font-size: $base / $scale * 4.38;
+		font-weight: bold;
+	}
 }
 
 h3,
 .h3 {
-	font-size: $base * $scale * 2;
-	font-weight: 400;
+	font-size: $base / $scale * 1.88;
 
-	@media (max-width: $mobile) {
-    font-size: $mobile_base * $mobile_scale * 1.5;
-  }
+	// @media (max-width: $mobile) {
+  //   font-size: $mobile_base * $mobile_scale * 1.5;
+  // }
 }
 
 h4,
 .h4 {
-	font-size: $base * $scale * 1.5;
+	font-size: $base / $scale * 1.56;
 
-	@media (max-width: $mobile) {
-    font-size: $mobile_base * $mobile_scale * 1;
-  }
+	// @media (max-width: $mobile) {
+  //   font-size: $mobile_base * $mobile_scale * 1;
+  // }
+
+	&.h4--mono {
+		font-family: $mono_font;
+		font-size: $base / $scale * 1.13;
+		line-height: $scale;
+	}
 }
 
 h5,
 .h5 {
-	font-size: $base * $scale;
-	font-weight: 500;
+	font-size: $base / $scale * 1.25;
 
-	@media (max-width: $mobile) {
-    font-size: $mobile_base * $mobile_scale * 1;
-  }
+	// @media (max-width: $mobile) {
+  //   font-size: $mobile_base * $mobile_scale * 1;
+  // }
+
+	&.h5--mono {
+		font-family: $mono_font;
+		font-size: $base / $scale * 0.94;
+		line-height: $scale;
+	}
 }
 
 h6,
 .h6 {
-	font-size: $base;
-	font-weight: normal;
+	font-size: $base / $scale * 1.13;
+
+	&.h6--mono {
+		font-family: $mono_font;
+		font-size: $base / $scale * 0.75;
+		line-height: $scale;
+	}
 }
 
 p {
-	line-height: $scale;
+	font-size: $base / $scale;
+	line-height: $base;
 	white-space: pre-line;
+	letter-spacing: -0.03em;
+}
+
+small {
+	font-size: $base / $scale * 0.75;
 }
 
 a {
