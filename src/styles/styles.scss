@@ -1,10 +1,19 @@
 @use 'sass:math';
 @import "./variables.scss";
 
-// :root {
-// 	--front-color: #{$front-color};
-// 	--back-color: #{$back-color};
-// }
+:root {
+	--Gris: #{$grey};
+	--Beige: #{$beige};
+	--Vert: #{$green};
+	--Jaune: #{$yellow};
+	--Or: #{$gold};
+	--Orange: #{$orange};
+	--Rouge: #{$red};
+	--Brun: #{$brown};
+	--Corail: #{$coral};
+	--Rose: #{$rose};
+	--Mauve: #{$rose_mauve};
+}
 
 * {
   box-sizing: border-box;
@@ -73,7 +82,7 @@ h1,
 
 	&.h1--hero {
 		font-family: $custom_font;
-		font-size: 14vw;
+		font-size: 15vw;
 		line-height: 0.88;
 		font-weight: bold;
 	}
@@ -214,6 +223,10 @@ button,
 	&.button--black {
 		color: $white;
 		background: $black;
+	}
+
+	&.button--grey {
+		background: $grey;
 	}
 
 	&:hover,

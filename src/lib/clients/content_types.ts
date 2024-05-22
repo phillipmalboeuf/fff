@@ -39,6 +39,7 @@ export interface TypeHeroFields {
     id?: EntryFieldTypes.Symbol;
     sousTitre?: EntryFieldTypes.Symbol;
     couleur?: EntryFieldTypes.Symbol<"Beige" | "Brun" | "Corail" | "Gris" | "Jaune" | "Mauve" | "Or" | "Orange" | "Rose" | "Rouge" | "Vert">;
+    media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     fleche?: EntryFieldTypes.Boolean;
 }
 

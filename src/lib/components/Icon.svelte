@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let i: "plus" | "minus" | "logo" | "point"
+  export let i: "plus" | "minus" | "logo" | "point" | "down"
   export let label: string
 </script>
 
@@ -15,6 +15,10 @@
 {:else if i === "point"}
 <svg aria-label={label} width="24" height="33" viewBox="0 0 24 33" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0.00463282 12.5122C-0.100731 14.6791 1.62683 18.8539 1.62683 18.8539L3.53531 21.4085L2.77589 20.7127L2.86734 21.0347L3.49753 22.0347L4.69828 23.2812L5.6227 24.2036L10.3501 32.8633L11.2646 32.41L17.3101 24.2712L19.5009 21.2395C19.5009 21.2395 20.5764 20.3111 21.5147 19.327C23.2264 17.5299 23.9977 12.9814 23.9977 12.9814C23.9977 12.9814 24.0892 8.55212 23.117 6.87823C22.2026 5.30573 20.4511 2.31977 20.4511 2.31977C20.4511 2.31977 16.5248 0.146892 13.7695 0.0117102C11.6722 -0.0916683 6.73796 0.518649 6.73796 0.518649C6.73796 0.518649 3.93688 2.35754 2.61487 3.80082C0.996642 5.56815 0.1259 10.0769 0.00662028 12.5122L0.00463282 12.5122Z" />
+</svg>
+{:else if i === "down"}
+<svg aria-label={label} width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1L7 6L13 1" stroke="currentColor" />
 </svg>
 {:else if i === "logo"}
 <svg aria-label={label} width="352" height="28" viewBox="0 0 352 28" xmlns="http://www.w3.org/2000/svg">
