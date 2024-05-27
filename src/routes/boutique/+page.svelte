@@ -6,7 +6,7 @@
 </script>
 
 
-<ol class="list--nostyle flex">
+<ol class="list--nostyle flex Gris">
   <!-- {JSON.stringify(data.items.result.items)} -->
   {#each data.items.result.objects as item}
   <li class="col col--3of12">
@@ -22,6 +22,7 @@
 
 <style lang="scss">
   ol.list--nostyle {
+    min-height: 100vh;
     padding: $base;
 
     li {

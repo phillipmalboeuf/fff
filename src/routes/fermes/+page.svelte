@@ -8,7 +8,7 @@
   let selection = $state<string>()
 </script>
 
-<main class="flex flex--tight_gapped">
+<main class="flex flex--tight_gapped Gris">
   <form class="col col--4of12">
     <ol class="list--nostyle">
       {#each data.fermes as ferme}

@@ -28,7 +28,7 @@
   })
 </script>
 
-<form action="/cart?/checkout" method="post" enctype="multipart/form-data">
+<form class="Gris" action="/cart?/checkout" method="post" enctype="multipart/form-data">
  <ol class="list--nostyle">
   {#each cart.items as item, i}
   <li class="flex flex--tight_gapped flex--middle">
@@ -62,6 +62,7 @@
 
 <style lang="scss">
   form {
+    min-height: 100vh;
     padding: $base;
     padding-top: $base * 4;
 
