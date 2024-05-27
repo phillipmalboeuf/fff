@@ -149,6 +149,7 @@ export interface TypeTextFields {
     media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     couleur?: EntryFieldTypes.Symbol<"Beige" | "Brun" | "Corail" | "Gris" | "Jaune" | "Mauve" | "Or" | "Orange" | "Rose" | "Rouge" | "Vert">;
     box?: EntryFieldTypes.Boolean;
+    centre?: EntryFieldTypes.Boolean;
 }
 
 export type TypeTextSkeleton = EntrySkeletonType<TypeTextFields, "text">;

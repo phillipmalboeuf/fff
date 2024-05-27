@@ -14,7 +14,7 @@
 
   let options: EmblaOptionsType = { loop: true }
   let plugins = [
-    ...autoplay ? [Autoplay({ delay: 2666, stopOnFocusIn: false, stopOnMouseEnter: false, stopOnInteraction: false })] : [],
+    ...autoplay ? [Autoplay({ delay: 3333, stopOnFocusIn: false, stopOnMouseEnter: false, stopOnInteraction: false })] : [],
     ...autoheight ? [Autoheight()] : []
   ]
 
@@ -154,7 +154,7 @@ nav {
         &.active {
           &:after {
             width: 100%;
-            transition: width 2666ms linear;
+            transition: width 3333ms linear;
           }
         }
       }

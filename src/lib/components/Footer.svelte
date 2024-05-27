@@ -49,7 +49,7 @@
 
 <style lang="scss">
 	footer {
-		padding: $base;
+		padding: ($gap * 2) $base;
 
     nav {
 
@@ -72,6 +72,12 @@
             margin-left: auto;
           }
         }
+      }
+    }
+
+    aside {
+      :global(.box) {
+        padding: 0;
       }
     }
 	}

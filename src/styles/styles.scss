@@ -140,6 +140,7 @@ h5,
 h6,
 .h6 {
 	font-size: $base / $scale * 1.13;
+	line-height: $scale;
 
 	&.h6--mono {
 		font-family: $mono_font;
@@ -223,6 +224,11 @@ button,
 	&.button--grey {
 		color: $black;
 		background: $grey;
+	}
+
+	&.button--beige {
+		color: $black;
+		background: $beige;
 	}
 
 	&:hover,
